@@ -22,9 +22,16 @@ export async function GET(req) {
   });
 
   const { searchParams } = new URL(req.url);
+
   const idParam = searchParams.get("id");
   const categoryParam = searchParams.get("category");
   const queryParam = searchParams.get("query");
+
+  // 🔹 Paginación
+  const page = Number(searchParams.get("page") ?? 1);
+  const limit = Number(searchParams.get("limit") ?? 3);
+  const start = (page - 1) * limit;
+  const end = page * limit;
 
   // ------------------------------
   // FUNCIONES PARA BÚSQUEDA DIFUSA
@@ -34,30 +41,24 @@ export async function GET(req) {
     return text
       .toLowerCase()
       .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, ""); // quita acentos
+      .replace(/[\u0300-\u036f]/g, "");
   }
 
   function levenshtein(a, b) {
     const matrix = [];
-
     const alen = a.length;
     const blen = b.length;
 
-    for (let i = 0; i <= alen; i++) {
-      matrix[i] = [i];
-    }
-    for (let j = 0; j <= blen; j++) {
-      matrix[0][j] = j;
-    }
+    for (let i = 0; i <= alen; i++) matrix[i] = [i];
+    for (let j = 0; j <= blen; j++) matrix[0][j] = j;
 
     for (let i = 1; i <= alen; i++) {
       for (let j = 1; j <= blen; j++) {
         const cost = a[i - 1] === b[j - 1] ? 0 : 1;
-
         matrix[i][j] = Math.min(
-          matrix[i - 1][j] + 1, // eliminar
-          matrix[i][j - 1] + 1, // insertar
-          matrix[i - 1][j - 1] + cost // sustituir
+          matrix[i - 1][j] + 1,
+          matrix[i][j - 1] + 1,
+          matrix[i - 1][j - 1] + cost
         );
       }
     }
@@ -70,38 +71,29 @@ export async function GET(req) {
     const b = normalize(search);
 
     const dist = levenshtein(a, b);
-
-    return dist <= Math.max(2, b.length * 0.4); 
-    // permite hasta 40% de error
+    return dist <= Math.max(2, b.length * 0.4);
   }
 
-  // -------------------------
   // 1️⃣ Buscar por ID
-  // -------------------------
   if (idParam) {
     const product = products.find((p) => p.id === Number(idParam));
     return Response.json(product || null);
   }
 
-  // -------------------------
-  // 2️⃣ Buscar por categoría EXACTA
-  // -------------------------
-  if (categoryParam) {
-    const filtrados = products.filter(
-      (p) =>
-        normalize(p.category) === normalize(categoryParam)
-    );
+  // 2️⃣ Buscar por categoría
+  let data = products;
 
-    return Response.json(filtrados);
+  if (categoryParam) {
+    data = data.filter(
+      (p) => normalize(p.category) === normalize(categoryParam)
+    );
   }
 
-  // -------------------------
-  // 3️⃣ BÚSQUEDA DIFUSA (query)
-  // -------------------------
+  // 3️⃣ Búsqueda difusa
   if (queryParam) {
     const q = normalize(queryParam);
 
-    const filtrados = products.filter((p) => {
+    data = data.filter((p) => {
       const name = p.name ? normalize(p.name) : "";
       const category = p.category ? normalize(p.category) : "";
 
@@ -112,12 +104,15 @@ export async function GET(req) {
         fuzzyMatch(category, q)
       );
     });
-
-    return Response.json(filtrados);
   }
 
-  // -------------------------
-  // 4️⃣ Devolver todo
-  // -------------------------
-  return Response.json(products);
+  // 4️⃣ PAGINACIÓN aplicada a resultados filtrados
+  const paginated = data.slice(start, end);
+
+ return Response.json({
+  products: paginated,
+  total: data.length,
+  hasMore: paginated.length === limit
+});
+
 }
