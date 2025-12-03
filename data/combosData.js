@@ -2,7 +2,7 @@ export const combosData = {
     "combo-full": {
     
         title: "Combo Full",
-        image: "/combos/combo-full.png",
+        image: "/combos/combofull.png",
         items: [
             "1 Banderín 'Feliz cumple' 3D",
             "4 Letras 3D de 14 cm",

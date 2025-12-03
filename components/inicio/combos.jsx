@@ -22,7 +22,7 @@ export default function Combos() {
                         hover:scale-[1.05] hover:shadow-pink-300/60">
                     <div className="mb-7 pb-7 w-full flex items-center border-b border-gray-300">
                         <Image
-                            src="/combos/combo-full.png"
+                            src="/combos/combofull.png"
                             alt="Combo full"
                             width={160}
                             height={80}
