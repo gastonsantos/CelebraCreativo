@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Buscador from "@/components/inicio/buscador";
 
 export default function Navbar() {
     const [open, setOpen] = useState(false);
@@ -71,29 +72,30 @@ export default function Navbar() {
                             onClick={() => setSubmenuOpen(!submenuOpen)}
                         >
                             Productos
-                           
+
                         </button>
 
                         {/* SUBMENÚ */}
                         <div
                             className={`
-                                absolute bg-black/90 backdrop-blur 
-                                border border-pink-200/40 
-                                rounded-xl shadow-lg shadow-pink-400/30 
-                                mt-1 w-48 text-[#E8899B] z-50
-                                transition-all duration-300
-                                ${submenuOpen ? "block" : "hidden"}  
-                                group-hover:block
-                            `}
+    absolute bg-black/90 backdrop-blur 
+    border border-pink-200/40 
+    rounded-xl shadow-lg shadow-pink-400/30 
+    mt-1 w-48 text-[#E8899B] z-50
+    transition-all duration-300
+    ${submenuOpen ? "block" : "hidden"}  
+    group-hover:block
+  `}
                         >
-                            <a href="#" className="block px-4 py-2 hover:bg-[#E8899B] hover:text-white transition-all">Toppers</a>
-                            <a href="#" className="block px-4 py-2 hover:bg-[#E8899B] hover:text-white transition-all">Stickers</a>
-                            <a href="#" className="block px-4 py-2 hover:bg-[#E8899B] hover:text-white transition-all">Bolsitas</a>
-                            <a href="#" className="block px-4 py-2 hover:bg-[#E8899B] hover:text-white transition-all">Souvenirs</a>
-                            <a href="#" className="block px-4 py-2 hover:bg-[#E8899B] hover:text-white transition-all">Centros de mesa</a>
+                            <a href="/inicio?category=Topper" className="block px-4 py-2 hover:bg-[#E8899B] hover:text-white transition-all">Toppers</a>
+                            <a href="/inicio?category=Stickers" className="block px-4 py-2 hover:bg-[#E8899B] hover:text-white transition-all">Stickers</a>
+                            <a href="/inicio?category=Bolsitas" className="block px-4 py-2 hover:bg-[#E8899B] hover:text-white transition-all">Bolsitas</a>
+                            <a href="/inicio?category=Souvenirs" className="block px-4 py-2 hover:bg-[#E8899B] hover:text-white transition-all">Souvenirs</a>
+                            <a href="/inicio?category=Centros de mesa" className="block px-4 py-2 hover:bg-[#E8899B] hover:text-white transition-all">Centros de mesa</a>
                         </div>
+
                     </div>
-                     {/* Combos*/}
+                    {/* Combos*/}
                     <a href="/inicio?section=combos" className={linkStyle}>Combos</a>
                     {/* Quiénes somos */}
                     <a href="/nosotros" className={linkStyle}>¿Quiénes somos?</a>
@@ -103,29 +105,8 @@ export default function Navbar() {
                 </div>
 
                 {/* Buscador (desktop) */}
-                <div className="relative mx-auto text-gray-600 lg:block hidden">
-                    <input
-                        className="
-                            border-2 border-pink-300 
-                            bg-black/30 backdrop-blur text-white 
-                            h-10 pl-2 pr-8 rounded-lg text-sm 
-                            focus:outline-none
-                        "
-                        type="buscar"
-                        placeholder="Buscar"
-                    />
-                    <button type="submit" className="absolute right-0 top-0 mt-3 mr-2">
-                        <svg
-                            className="text-pink-300 h-4 w-4 fill-current"
-                            viewBox="0 0 56.966 56.966"
-                        >
-                            <path d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  
-                             s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  
-                             c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z" />
-                        </svg>
-                    </button>
-                </div>
-
+                <Buscador />
+                
             </div>
         </nav>
     );
