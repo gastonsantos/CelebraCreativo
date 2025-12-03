@@ -15,7 +15,7 @@ export const combosData = {
 
     "combo-clasico": {
         title: "Combo Clásico",
-        image: "/combos/combo-full.png",
+        image: "/combos/combo-clasico.png",
         items: [
             "Incluye X cosa",
             "Más detalles",
@@ -27,7 +27,7 @@ export const combosData = {
 
     "combo-premium": {
         title: "Combo Premium",
-        image: "/combos/combo-full.png",
+        image: "/combos/combo-premium.png",
         items: [
             "Contenido premium exclusivo",
             "Más contenido detallado",

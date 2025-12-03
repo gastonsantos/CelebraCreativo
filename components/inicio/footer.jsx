@@ -116,7 +116,7 @@ export default function Footer() {
                             />
                         </a>
 
-                        {/* Facebook */}
+                        {/* Facebook */} 
                         <a href="/" className="hover:opacity-70 transition">
                             <Image
                                 src="/redes/face.png"
