@@ -112,7 +112,7 @@ export async function GET(req) {
  return Response.json({
   products: paginated,
   total: data.length,
-  hasMore: paginated.length === limit
+  hasMore: end < data.length
 });
 
 }

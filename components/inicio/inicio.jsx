@@ -1,14 +1,16 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "@/components/inicio/navbar";
 import Footer from "@/components/inicio/footer";
 import Card from "@/components/inicio/card";
 import Combos from "@/components/inicio/combos";
 import WhatsAppButton from "@/components/inicio/whatsapButton";
 import PedidoCarrito from "@/components/detalle/pedidoCarrito";
-import { useSearchParams } from "next/navigation";
 import OrdenarMenu from "@/components/inicio/ordenarMenu";
+import { useSearchParams } from "next/navigation";
+
+import { obtenerProductos } from "@/services/api";
 
 const Inicio = () => {
   const searchParams = useSearchParams();
@@ -19,61 +21,61 @@ const Inicio = () => {
   const [sort, setSort] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const loaderRef = useRef(null);
-
   const category = searchParams.get("category");
   const query = searchParams.get("query");
 
   // -------------------------------------------------
-  // 🚀 CARGA PAGINADA
+  // 🚀 FUNCIÓN CENTRAL DE CARGA
   // -------------------------------------------------
-async function cargar(p, limit = 3) {
-  if (loading || !hasMore) return;
-  setLoading(true);
+  async function cargar(p) {
+    if (loading || !hasMore) return;
 
-  try {
-    let url = `/api/products?page=${p}&limit=${limit}`;
-    if (category) url += `&category=${encodeURIComponent(category)}`;
-    if (query) url += `&query=${encodeURIComponent(query)}`;
+    setLoading(true);
 
-    const res = await fetch(url);
-    if (!res.ok) throw new Error("Error al obtener productos");
-    const data = await res.json();
+    try {
+      const limit = 6;
 
-    setProducts((prev) => {
-      const ids = new Set(prev.map((it) => it.id));
-      const next = data.products.filter((it) => !ids.has(it.id));
-      return [...prev, ...next];
-    });
+      const data = await obtenerProductos({
+        page: p,
+        limit,
+        category,
+        query,
+        sort: null, // el sort lo aplicamos en el front
+      });
 
-    setHasMore(Boolean(data.hasMore));
-  } catch (err) {
-    console.error("Error cargar productos:", err);
-  } finally {
-    setLoading(false);
+      // evitar duplicados
+      setProducts((prev) => {
+        const ids = new Set(prev.map((it) => it.id));
+        const nuevos = data.products.filter((it) => !ids.has(it.id));
+        return [...prev, ...nuevos];
+      });
+
+      setHasMore(Boolean(data.hasMore));
+    } catch (error) {
+      console.error("Error al cargar productos:", error);
+    } finally {
+      setLoading(false);
+    }
   }
-}
 
-
-  // Cargar primera página cuando cambian filtros
+  // -------------------------------------------------
+  // 🚀 RESET cuando cambian filtros
+  // -------------------------------------------------
   useEffect(() => {
     setProducts([]);
     setPage(1);
     setHasMore(true);
-
-    // Carga inmediata la primera página
-    cargar(1);
   }, [category, query]);
 
-  // Cargar páginas siguientes (evita volver a cargar página 1)
+  // -------------------------------------------------
+  // 🚀 Carga automática según la página
+  // -------------------------------------------------
   useEffect(() => {
-    if (page > 1) cargar(page);
+    cargar(page);
   }, [page]);
 
-
-
   // -------------------------------------------------
-  // 🚀 ORDENAMIENTO
+  // 🚀 ORDENAMIENTO FRONTEND
   // -------------------------------------------------
   useEffect(() => {
     if (!sort) return;
@@ -95,9 +97,11 @@ async function cargar(p, limit = 3) {
     setProducts(sorted);
   }, [sort]);
 
-  // Fallback: función manual para cargar más (botón)
+  // Botón manual de carga
   const handleLoadMore = () => {
-    if (!loading && hasMore) setPage((p) => p + 1);
+    if (!loading && hasMore) {
+      setPage((p) => p + 1);
+    }
   };
 
   return (
@@ -115,7 +119,7 @@ async function cargar(p, limit = 3) {
         ))}
       </div>
 
-      {/* LOADER INFINITO */}
+      {/* LOADER / BOTÓN */}
       <div className="h-20 flex flex-col justify-center items-center">
         {loading && <p className="text-pink-300">Cargando más productos...</p>}
 
@@ -123,12 +127,12 @@ async function cargar(p, limit = 3) {
           <button
             onClick={handleLoadMore}
             className="bg-[#E8899B]
-            text-white 
-            py-4 px-10 
-            rounded-2xl text-xl font-bold
-            shadow-lg shadow-pink-400/40
-            transition-all duration-300
-            hover:scale-[1.05] hover:shadow-pink-300/60 cursor-pointer"
+              text-white 
+              py-4 px-10 
+              rounded-2xl text-xl font-bold
+              shadow-lg shadow-pink-400/40
+              transition-all duration-300
+              hover:scale-[1.05] hover:shadow-pink-300/60 cursor-pointer"
           >
             Cargar más productos
           </button>
@@ -139,11 +143,10 @@ async function cargar(p, limit = 3) {
         )}
       </div>
 
-
-      <Combos id="combos"/>
+      <Combos id="combos" />
       <PedidoCarrito />
       <WhatsAppButton />
-      <Footer  />
+      <Footer />
     </div>
   );
 };
