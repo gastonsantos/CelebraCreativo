@@ -1,6 +1,6 @@
 export const combosData = {
     "combo-full": {
-
+        id: "combo-full",
         title: "Combo Full",
         image: "/combos/combofull.png",
         items: [
@@ -13,6 +13,7 @@ export const combosData = {
     },
 
     "combo-clasico": {
+        id:"combo-clasico",
         title: "Combo Clásico",
         image: "/combos/combo-clasico.png",
         items: [
@@ -25,6 +26,7 @@ export const combosData = {
 },
 
 "combo-premium": {
+    id:"combo-premium",
     title: "Combo Premium",
         image: "/combos/combo-premium.png",
             items: [

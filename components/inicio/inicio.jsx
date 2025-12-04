@@ -70,38 +70,7 @@ const Inicio = () => {
     if (page > 1) cargar(page);
   }, [page]);
 
-  // -------------------------------------------------
-  // 🚀 INFINITE SCROLL (IntersectionObserver) — mejorado
-  // -------------------------------------------------
-  useEffect(() => {
-    const node = loaderRef.current;
-    if (!node) return;
 
-    const options = {
-      root: null,
-      rootMargin: "200px", // pre-carga antes de llegar al final
-      threshold: 0
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      const first = entries[0];
-      if (first.isIntersecting && hasMore && !loading) {
-        setPage((prev) => prev + 1);
-      }
-    }, options);
-
-    observer.observe(node);
-
-    return () => {
-      // mejor unobserve que disconnect para evitar interferir con otros observers
-      try {
-        observer.unobserve(node);
-      } catch (e) {
-        // noop
-      }
-      observer.disconnect();
-    };
-  }, [hasMore, loading, /*loaderRef no va en deps*/]);
 
   // -------------------------------------------------
   // 🚀 ORDENAMIENTO
@@ -147,25 +116,34 @@ const Inicio = () => {
       </div>
 
       {/* LOADER INFINITO */}
-      <div ref={loaderRef} className="h-20 flex flex-col justify-center items-center">
+      <div className="h-20 flex flex-col justify-center items-center">
         {loading && <p className="text-pink-300">Cargando más productos...</p>}
 
         {!loading && hasMore && (
           <button
             onClick={handleLoadMore}
-            className="px-4 py-2 rounded bg-pink-500 text-black font-semibold"
+            className="bg-[#E8899B]
+            text-white 
+            py-4 px-10 
+            rounded-2xl text-xl font-bold
+            shadow-lg shadow-pink-400/40
+            transition-all duration-300
+            hover:scale-[1.05] hover:shadow-pink-300/60 cursor-pointer"
           >
-            Cargar más
+            Cargar más productos
           </button>
         )}
 
-        {!hasMore && <p className="text-gray-400">No hay más productos.</p>}
+        {!hasMore && (
+          <p className="text-gray-400 mt-2">No hay más productos.</p>
+        )}
       </div>
 
-      <Combos id="combos" />
+
+      <Combos />
       <PedidoCarrito />
       <WhatsAppButton />
-      <Footer />
+      <Footer id="combos" />
     </div>
   );
 };

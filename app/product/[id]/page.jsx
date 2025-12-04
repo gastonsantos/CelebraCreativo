@@ -12,6 +12,7 @@ import Navbar from "@/components/inicio/navbar";
 import Footer from "@/components/inicio/footer";
 import AgregarAPedido from "@/components/detalle/agregarApedido";
 import { usePedido } from "@/context/pedidoContext";
+import ProductosSimilares from "@/components/detalle/productosSimilares";
 
 import Redes from "@/components/redes/redes";
 export default function ProductDetail({ params }) {
@@ -23,18 +24,35 @@ export default function ProductDetail({ params }) {
     const [cantidad, setCantidad] = useState(1);
     const [mainImage, setMainImage] = useState("");
 
+    const [productosRelacionados, setProductosRelacionados] = useState([]);
+
+
     useEffect(() => {
         async function cargar() {
             try {
                 const data = await obtenerProductoPorId(id);
                 setProducto(data);
                 setMainImage(data.images?.[0] || data.image);
+
+                // 🔥 Cuando ya tengo el producto → cargar relacionados
+                if (data.category) {
+                    const response = await fetch(`/api/products?category=${data.category}`);
+                    const json = await response.json();
+
+                    // Excluir el mismo producto
+                    const filtrados = json.products
+                        .filter(p => p.id !== data.id)
+                        .slice(0, 4); // Elegís cuántos mostrar
+
+                    setProductosRelacionados(filtrados);
+                }
             } catch (error) {
                 console.error("Error cargando productos", error);
             }
         }
         cargar();
     }, []);
+
 
     // 👉 SUBTOTAL DEL PEDIDO ACTUAL
     const subtotalPedido = pedido.reduce(
@@ -167,7 +185,13 @@ export default function ProductDetail({ params }) {
                                     Consultar este producto
                                 </a>
 
-                                <button className="bg-[#E8899B] text-white px-6 py-2 rounded-md hover:bg-pink-600 cursor-pointer">
+                                <button className="bg-[#E8899B]
+            text-white 
+            py-4 px-10 
+            rounded-2xl text-xl font-bold
+            shadow-lg shadow-pink-400/40
+            transition-all duration-300
+            hover:scale-[1.05] hover:shadow-pink-300/60 cursor-pointer">
                                     Ver en MercadoLibre
                                 </button>
 
@@ -209,8 +233,9 @@ export default function ProductDetail({ params }) {
                             </div>
                             <Redes />
                         </div>
-
+                        <ProductosSimilares productos={productosRelacionados} />
                     </div>
+
                 </div>
 
                 <PedidoCarrito />

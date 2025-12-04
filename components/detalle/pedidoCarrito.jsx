@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { usePedido } from "@/context/pedidoContext";
 import { useState } from "react";
+import { FaListUl } from "react-icons/fa";
 
 export default function PedidoCarrito() {
   const { pedido, eliminarProducto } = usePedido();
@@ -36,15 +37,15 @@ export default function PedidoCarrito() {
       <div
         className="
     fixed bottom-28 right-5 z-[9999]
-   bg-gradient-to-br from-[#E8899B] to-[#ffb3c4]
-   shadow-md text-white
+    bg-gradient-to-br from-[#E8899B] to-[#ffb3c4]
+    shadow-md text-white
     w-20 h-20 rounded-full shadow-2xl
     flex items-center justify-center cursor-pointer
     hover:scale-110 transition-transform duration-200
   "
         onClick={() => setOpen(true)}
       >
-        <div className="relative text-center text-3xl">🛒</div>
+        <FaListUl className="text-4xl" />
 
         {cantidad > 0 && (
           <span

@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import WhatsAppButton from "@/components/inicio/whatsapButton";
-export default function ComboDetail({ title, image, items }) {
+import CombosSimilares from "@/components/combos/combosSimilares";
+export default function ComboDetail({ title, image, items, allCombos }) {
     return (
         <main className="max-w-5xl mx-auto pt-20 pb-36 px-6 ">
 
@@ -22,7 +23,7 @@ export default function ComboDetail({ title, image, items }) {
             </div>
 
             {/* CARD PRINCIPAL */}
-            {/* CARD PRINCIPAL */}
+
             <div className="
     relative overflow-hidden
     max-w-3xl mx-auto         
@@ -90,7 +91,7 @@ export default function ComboDetail({ title, image, items }) {
 
 
             {/* CTA CONTACTO */}
-            {/* CTA CONTACTO */}
+
             <div className="text-center mt-14">
                 <a
                     href={`https://wa.me/5491162666780?text=${encodeURIComponent(
@@ -112,6 +113,9 @@ export default function ComboDetail({ title, image, items }) {
                     Consultar este combo
                 </a>
             </div>
+            {/* Combos relacionados */}
+            <CombosSimilares combos={allCombos} currentTitle={title} />
+
             <WhatsAppButton />
         </main>
     );
