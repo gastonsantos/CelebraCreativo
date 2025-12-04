@@ -27,33 +27,33 @@ const Inicio = () => {
   // -------------------------------------------------
   // 🚀 CARGA PAGINADA
   // -------------------------------------------------
-  async function cargar(p) {
-    if (loading || !hasMore) return;
-    setLoading(true);
+async function cargar(p, limit = 3) {
+  if (loading || !hasMore) return;
+  setLoading(true);
 
-    try {
-      let url = `/api/products?page=${p}&limit=3`;
-      if (category) url += `&category=${encodeURIComponent(category)}`;
-      if (query) url += `&query=${encodeURIComponent(query)}`;
+  try {
+    let url = `/api/products?page=${p}&limit=${limit}`;
+    if (category) url += `&category=${encodeURIComponent(category)}`;
+    if (query) url += `&query=${encodeURIComponent(query)}`;
 
-      const res = await fetch(url);
-      if (!res.ok) throw new Error("Error al obtener productos");
-      const data = await res.json();
+    const res = await fetch(url);
+    if (!res.ok) throw new Error("Error al obtener productos");
+    const data = await res.json();
 
-      // evita duplicados si por alguna razón se llamara dos veces
-      setProducts((prev) => {
-        const ids = new Set(prev.map((it) => it.id));
-        const next = data.products.filter((it) => !ids.has(it.id));
-        return [...prev, ...next];
-      });
+    setProducts((prev) => {
+      const ids = new Set(prev.map((it) => it.id));
+      const next = data.products.filter((it) => !ids.has(it.id));
+      return [...prev, ...next];
+    });
 
-      setHasMore(Boolean(data.hasMore));
-    } catch (err) {
-      console.error("Error cargar productos:", err);
-    } finally {
-      setLoading(false);
-    }
+    setHasMore(Boolean(data.hasMore));
+  } catch (err) {
+    console.error("Error cargar productos:", err);
+  } finally {
+    setLoading(false);
   }
+}
+
 
   // Cargar primera página cuando cambian filtros
   useEffect(() => {
@@ -140,10 +140,10 @@ const Inicio = () => {
       </div>
 
 
-      <Combos />
+      <Combos id="combos"/>
       <PedidoCarrito />
       <WhatsAppButton />
-      <Footer id="combos" />
+      <Footer  />
     </div>
   );
 };

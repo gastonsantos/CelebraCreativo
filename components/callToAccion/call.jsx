@@ -1,61 +1,83 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Confetti from "react-confetti";
 
 export default function Call() {
     const router = useRouter();
-    const [logoPreview, setLogoPreview] = useState("/images/Celebra.png");
+    const [logoPreview, setLogoPreview] = useState("/images/Celebra2.png");
+    const [showQR, setShowQR] = useState(false);
+    const [showConfetti, setShowConfetti] = useState(false);
+    const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
+    const phone = "549116266780";
+    const message = "Hola! Quiero hacer una consulta 😊";
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            setWindowSize({
+                width: window.innerWidth,
+                height: window.innerHeight
+            });
+        }
+    }, []);
+
+    const handleCatalogClick = () => {
+        setShowConfetti(true);
+        setTimeout(() => {
+            router.push("/inicio");
+        }, 1500);
+    };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-black px-4 }
-        w-full
-        max-w-[800px]
-        lg:max-w-[1000px]
-        xl:max-w-[1200px]
-        2xl:max-w-[1400px]
-        mx-auto
-        ">
+        <>
+            {showConfetti && (
+                <Confetti
+                    width={windowSize.width}
+                    height={windowSize.height}
+                    numberOfPieces={800}
+                    recycle={false}
+                    gravity={0.5}
+                    colors={["#E8899B"]}
+                />
+            )}
 
-            {/* CONTENEDOR PRINCIPAL */}
+            {/* 🔥 CONTENEDOR FULL SCREEN CON FONDO RESPONSIVE */}
             <div
                 className="
-        relative 
-        w-full
-        max-w-[800px]
-        lg:max-w-[1000px]
-        xl:max-w-[1200px]
-        2xl:max-w-[1400px]
-        mx-auto
-        min-h-[600px]
-        bg-center 
-        bg-no-repeat 
-        bg-cover 
-        rounded-2xl 
-        shadow-2xl 
-        flex 
-        items-center 
-        justify-center 
-        p-6 md:p-10
-        overflow-hidden
-    "
-                style={{ backgroundImage: "url(/images/Fondo3.jpeg)" }}
+                    min-h-screen w-full 
+                    flex items-center justify-center
+                    bg-black relative
+                    overflow-hidden
+                "
             >
+                {/* 🔥 Imagen de fondo A PANTALLA COMPLETA */}
+                <div
+                    className="
+                        absolute inset-0 w-full h-full
+                        bg-cover bg-center bg-no-repeat
+                    "
+                    style={{
+                        backgroundImage: "url(/images/Fondo3.jpeg)",
+                    }}
+                ></div>
 
+                {/* Capa oscura */}
+                <div className="absolute inset-0 bg-black/55"></div>
 
-                {/* OVERLAY OSCURO */}
-                <div className="absolute inset-0 bg-black/60 rounded-2xl z-10"></div>
+                {/* 🔥 CONTENIDO CENTRADO Y RESPONSIVE */}
+                <div className="relative z-20 flex flex-col items-center text-center px-6">
 
-                {/* CONTENIDO CENTRADO */}
-                <div className="relative z-20 text-center flex flex-col items-center">
-                    <div className="
-  w-40 h-40     /* móviles */
-  sm:w-56 sm:h-56
-  md:w-80 md:h-80
-  lg:w-96 lg:h-96
-  overflow-hidden
-  mb-4
-">
-
+                    {/* LOGO RESPONSIVE */}
+                    <div
+                        className="
+                            w-48 h-48
+                            sm:w-64 sm:h-64
+                            md:w-80 md:h-80
+                            lg:w-[420px] lg:h-[420px]
+                            xl:w-[480px] xl:h-[480px]
+                            overflow-hidden mb-8
+                        "
+                    >
                         <img
                             className="w-full h-full object-cover"
                             src={logoPreview}
@@ -63,71 +85,76 @@ export default function Call() {
                         />
                     </div>
 
-                    <label className="text-3xl md:text-4xl font-semibold text-[#E8899B] mb-4">
-                        Celebra Creativo
-                    </label>
-
-
+                    {/* BOTÓN RESPONSIVE */}
                     <button
-                        onClick={() => router.push("/inicio")}
-                        className="cursor-pointer text-xl font-bold text-[#E8899B] py-2 px-4 rounded-full bg-black hover:bg-gray-900"
+                        onClick={handleCatalogClick}
+                        className="
+                            bg-[#E8899B]
+                            text-white py-4 px-10  cursor-pointer
+                            rounded-2xl text-xl sm:text-2xl md:text-3xl
+                            font-bold shadow-lg shadow-pink-400/40
+                            hover:scale-[1.07] transition-all duration-300
+                        "
                     >
                         Ver catálogo
                     </button>
                 </div>
 
-                {/* WHATSAPP — CENTRADO EN MOBILE, IZQUIERDA EN DESKTOP */}
-                <button
+                {/* WHATSAPP */}
+                
+                <a
+                    href={`https://wa.me/${phone}?text=${encodeURIComponent(message)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="
-        w-16 h-16 md:w-20 md:h-20
-        overflow-hidden 
-        shadow-lg 
-        cursor-pointer 
-        absolute 
-        bottom-4
-        left-1/2 -translate-x-1/2      
-        md:left-4 md:translate-x-0      
-        transition-transform duration-200
-        hover:scale-110
-        z-20
+        w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24
+        absolute bottom-5 left-1/2 -translate-x-1/2
+        md:left-6 md:translate-x-0
+        z-20 hover:scale-110 transition-transform cursor-pointer
     "
                 >
                     <img
                         src="redes/whatsap-rosa.png"
+                        className="w-full h-full object-contain"
                         alt="WhatsApp"
-                        className="w-full h-full"
                     />
-                </button>
+                </a>
 
 
-                {/* INSTAGRAM — SOLO DESKTOP */}
+                {/* INSTAGRAM QR */}
                 <div
                     className="
-                        hidden md:flex 
-                        flex-col
-                        cursor-pointer 
-                        items-center 
-                        absolute 
-                        bottom-6 right-6
-                        transition-transform duration-200
-                        hover:scale-110
-                        z-20
+                        hidden md:flex flex-col items-center
+                        absolute bottom-8 right-8 z-20 cursor-pointer
+                        hover:scale-110 transition-transform
                     "
+                    onClick={() => setShowQR(true)}
                 >
-                    <span className="text-white text-sm mb-2 font-semibold">
+                    <span className="text-white text-lg mb-2 font-semibold">
                         Instagram
                     </span>
 
-                    <div className="w-20 h-20 bg-white p-2 rounded-lg shadow-lg">
+                    <div className="w-24 h-24 xl:w-28 xl:h-28 bg-white p-3 rounded-2xl shadow-lg">
                         <img
                             src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.instagram.com"
-                            alt="Instagram QR"
                             className="w-full h-full object-contain"
                         />
                     </div>
                 </div>
 
+                {/* MODAL QR */}
+                {showQR && (
+                    <div
+                        className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
+                        onClick={() => setShowQR(false)}
+                    >
+                        <img
+                            src="https://api.qrserver.com/v1/create-qr-code/?size=600x600&data=https://www.instagram.com"
+                            className="max-w-full max-h-full rounded-2xl"
+                        />
+                    </div>
+                )}
             </div>
-        </div>
+        </>
     );
 }

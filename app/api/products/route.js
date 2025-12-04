@@ -29,7 +29,7 @@ export async function GET(req) {
 
   // 🔹 Paginación
   const page = Number(searchParams.get("page") ?? 1);
-  const limit = Number(searchParams.get("limit") ?? 3);
+  const limit = Number(searchParams.get("limit") ?? 6);
   const start = (page - 1) * limit;
   const end = page * limit;
 
