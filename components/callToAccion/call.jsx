@@ -136,7 +136,7 @@ export default function Call() {
 
                     <div className="w-24 h-24 xl:w-28 xl:h-28 bg-white p-3 rounded-2xl shadow-lg">
                         <img
-                            src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.instagram.com"
+                            src="/images/CelebraQr.png"
                             className="w-full h-full object-contain"
                         />
                     </div>
@@ -149,7 +149,7 @@ export default function Call() {
                         onClick={() => setShowQR(false)}
                     >
                         <img
-                            src="https://api.qrserver.com/v1/create-qr-code/?size=600x600&data=https://www.instagram.com"
+                            src="/images/CelebraQr.png"
                             className="max-w-full max-h-full rounded-2xl"
                         />
                     </div>
