@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-
+import Mensaje from "@/components/mensaje/mensaje";
 export default function Footer() {
     return (
         <div className="relative mt-16 bg-[#E8899B]">
@@ -56,44 +56,13 @@ export default function Footer() {
                     <div>
                         <p className="font-semibold tracking-wide text-black">Contáctanos</p>
                         <ul className="mt-2 space-y-2 text-purple-100">
-                            <li> +54 11 1234 5678</li>
+                            <li> +54 11 6266 6780</li>
                             <li> hola@celebracreativo.com</li>
                         </ul>
                     </div>
 
                     {/* FORMULARIO MENSAJE */}
-                    <div className="shadow-md border border-black rounded-lg p-8">
-                        <p className="font-semibold tracking-wide text-black mb-3">Envíanos tu consulta</p>
-
-                        <form className="space-y-3">
-                            <input
-                                type="text"
-                                placeholder="Nombre"
-                                className="w-full p-2 rounded-md text-black"
-                            />
-                            <input
-                                type="email"
-                                placeholder="Email"
-                                className="w-full p-2 rounded-md text-black"
-                            />
-                            <input
-                                type="text"
-                                placeholder="Teléfono"
-                                className="w-full p-2 rounded-md text-black"
-                            />
-                            <textarea
-                                placeholder="Mensaje"
-                                className="w-full p-2 h-24 rounded-md text-black"
-                            ></textarea>
-
-                            <button
-                                type="submit"
-                                className="w-full bg-black text-white py-2 rounded-md hover:bg-gray-800 transition"
-                            >
-                                Enviar
-                            </button>
-                        </form>
-                    </div>
+                 <Mensaje/>
 
                 </div>
 
@@ -107,7 +76,7 @@ export default function Footer() {
                     <div className="flex items-center mt-4 space-x-4 sm:mt-0">
 
                         {/* Instagram */}
-                        <a href="/" className="hover:opacity-70 transition">
+                        <a href="https://www.instagram.com/celebra_creativo/" className="hover:opacity-70 transition">
                             <Image
                                 src="/redes/insta.png"
                                 alt="Instagram"
@@ -117,7 +86,7 @@ export default function Footer() {
                         </a>
 
                         {/* Facebook */} 
-                        <a href="/" className="hover:opacity-70 transition">
+                        <a href="https://www.facebook.com/celebra.creativo?locale=es_LA" className="hover:opacity-70 transition">
                             <Image
                                 src="/redes/facebook.png"
                                 alt="Facebook"
