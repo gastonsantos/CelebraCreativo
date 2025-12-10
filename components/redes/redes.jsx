@@ -6,7 +6,7 @@ export default function Redes() {
 
       {/* Instagram */}
       <a
-        href="https://instagram.com/tu_usuario_aqui"
+        href="https://www.instagram.com/celebra_creativo/"
         target="_blank"
         rel="noopener noreferrer"
         className="
@@ -29,7 +29,7 @@ export default function Redes() {
 
       {/* Facebook */}
       <a
-        href="https://facebook.com/tu_usuario_aqui"
+        href="https://www.facebook.com/celebra.creativo?locale=es_LA"
         target="_blank"
         rel="noopener noreferrer"
         className="

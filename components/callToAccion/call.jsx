@@ -136,7 +136,7 @@ export default function Call() {
 
                     <div className="w-24 h-24 xl:w-28 xl:h-28 bg-white p-3 rounded-2xl shadow-lg">
                         <img
-                            src="/images/Celebra-Qr.png"
+                            src="/images/Celebra-qr.png"
                             className="w-full h-full object-contain"
                         />
                     </div>

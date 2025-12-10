@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 export default function InstagramVideo({ url }) {
     const containerRef = useRef(null);
@@ -74,25 +75,33 @@ export default function InstagramVideo({ url }) {
                 <button
                     onClick={() => setIsOpen(true)}
                     className="
-            fixed 
-            top-4 right-4          
-            md:top-20              
-            lg:top-32              
-            z-50
-            bg-black/70 text-white
-            rounded-full 
-            px-3 py-2 text-sm    
-            md:px-4 md:py-3 md:text-base 
-            lg:px-5 lg:py-4 lg:text-lg    
-            shadow-lg border border-white/20
-            hover:bg-black transition
-            cursor-pointer
-        "
+      fixed 
+      top-4 right-4          
+      md:top-20              
+      lg:top-32              
+      z-50
+      bg-white/10 backdrop-blur-md 
+      border border-white/20
+      hover:bg-white/20
+      transition-all
+      p-2 rounded-xl 
+      flex items-center gap-2
+      cursor-pointer
+    "
                 >
-                    🎬 Video
+                    <Image
+                        src="/redes/video.png" 
+                        width={32}
+                        height={32}
+                        alt="Video"
+                        className="rounded-md"
+                    />
+
+                    <span className="text-sm text-gray-300 font-semibold">
+                        Ver video
+                    </span>
                 </button>
             )}
-
 
             {/* 🟣 Pantallas grandes → ventanita flotante */}
             {!isSmallScreen && isOpen && (
@@ -105,7 +114,7 @@ export default function InstagramVideo({ url }) {
                         {/* Botón cerrar */}
                         <button
                             onClick={() => setIsOpen(false)}
-                            className="absolute top-2 right-2 bg-black/60 text-white rounded-full p-1 text-sm hover:bg-black transition"
+                            className=" cursor-pointer *:absolute top-2 right-2 bg-black/60 text-white rounded-full p-1 text-sm hover:bg-black transition"
                         >
                             ✕
                         </button>
