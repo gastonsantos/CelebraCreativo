@@ -2,7 +2,8 @@
 import Image from "next/image";
 
 export default function WhatsAppButton() {
-    const phone = "549116266780";
+
+    const phone = "541170668904";
     const message = "Hola! Quiero hacer una consulta 😊";
 
     return (

@@ -9,7 +9,7 @@ export default function PedidoCarrito() {
   const [open, setOpen] = useState(false);
 
   const cantidad = pedido.length;
-
+  const telefono = "541170668904";
   // 🔥 TOTAL REAL
   const subtotal = pedido.reduce(
     (acc, p) => acc + (Number(p.price) * (p.cantidad ?? 1)),
@@ -28,7 +28,7 @@ export default function PedidoCarrito() {
     `\n\nTOTAL: $${subtotal}`
   );
 
-  const telefono = "5491162666780";
+
 
   return (
     <>

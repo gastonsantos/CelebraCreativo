@@ -9,7 +9,7 @@ export default function Call() {
     const [showQR, setShowQR] = useState(false);
     const [showConfetti, setShowConfetti] = useState(false);
     const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
-    const phone = "549116266780";
+    const phone = "541170668904";
     const message = "Hola! Quiero hacer una consulta 😊";
 
     useEffect(() => {
