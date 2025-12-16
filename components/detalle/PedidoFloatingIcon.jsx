@@ -10,7 +10,7 @@ export default function PedidoFloatingIcon() {
 
     return (
         <>
-            {/* ICONO FLOTANTE */}
+            
             <div
                 onClick={() => setOpen(true)}
                 className="fixed bottom-5 right-5 bg-pink-600 w-14 h-14 rounded-full shadow-xl cursor-pointer flex items-center justify-center text-white text-2xl"
@@ -23,7 +23,7 @@ export default function PedidoFloatingIcon() {
                 )}
             </div>
 
-            {/* SIDEBAR */}
+          
             <CarritoSidebar open={open} setOpen={setOpen} />
         </>
     );

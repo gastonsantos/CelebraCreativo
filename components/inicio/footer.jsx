@@ -5,7 +5,7 @@ import Mensaje from "@/components/mensaje/mensaje";
 export default function Footer() {
     return (
         <div className="relative mt-16 bg-[#E8899B]">
-            {/* Wave superior */}
+           
             <svg
                 className="absolute top-0 w-full h-6 -mt-5 sm:-mt-10 sm:h-16 text-[#E8899B]"
                 preserveAspectRatio="none"
@@ -20,7 +20,7 @@ export default function Footer() {
             <div className="px-4 pt-12 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
                 <div className="grid gap-16 row-gap-10 mb-8 lg:grid-cols-4">
 
-                    {/* LOGO + TEXTO */}
+                  
                     <div className="">
                         <a href="/" aria-label="Go home" className="inline-flex items-center">
                             <Image
@@ -40,7 +40,7 @@ export default function Footer() {
                         </p>
                     </div>
 
-                    {/* CATEGORY */}
+                    
                     <div>
                         <p className="font-semibold tracking-wide text-black">Categorias</p>
                         <ul className="mt-2 space-y-2 text-purple-100">
@@ -52,30 +52,30 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* CONTACTANOS */}
+                    
                     <div>
                         <p className="font-semibold tracking-wide text-black">Contáctanos</p>
                         <ul className="mt-2 space-y-2 text-purple-100">
-                            <li> +54 11 6266 6780</li>
-                            <li> hola@celebracreativo.com</li>
+                            <li> +54 11 7066 8904</li>
+                            <li> celebracreatibo@gmail.com</li>
                         </ul>
                     </div>
 
-                    {/* FORMULARIO MENSAJE */}
+                   
                  <Mensaje/>
 
                 </div>
 
-                {/* COPYRIGHT + REDES */}
+                
                 <div className="flex flex-col justify-between pt-5 pb-10 border-t border-purple-300 sm:flex-row">
                     <p className="text-sm text-white">
                         © 2025 CelebraCreativo. Todos los derechos reservados.
                     </p>
 
-                    {/* Redes sociales */}
+                    
                     <div className="flex items-center mt-4 space-x-4 sm:mt-0">
 
-                        {/* Instagram */}
+                      
                         <a href="https://www.instagram.com/celebra_creativo/" className="hover:opacity-70 transition">
                             <Image
                                 src="/redes/insta.png"
@@ -85,7 +85,7 @@ export default function Footer() {
                             />
                         </a>
 
-                        {/* Facebook */} 
+                       
                         <a href="https://www.facebook.com/celebra.creativo?locale=es_LA" className="hover:opacity-70 transition">
                             <Image
                                 src="/redes/facebook.png"
@@ -95,7 +95,7 @@ export default function Footer() {
                             />
                         </a>
 
-                        {/* Mercado Libre */}
+                        
                         <a href="/" className="hover:opacity-70 transition">
                             <Image
                                 src="/redes/ML_noFondo.png"

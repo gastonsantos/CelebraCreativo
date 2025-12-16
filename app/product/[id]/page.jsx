@@ -17,15 +17,14 @@ import InstagramEmbed from "@/components/detalle/instagramVideo";
 import Redes from "@/components/redes/redes";
 import NotaCompra from "@/components/detalle/notaCompra";
 import NotaML from "@/components/detalle/notaML";
+
 export default function ProductDetail({ params }) {
 
-    const { agregarProducto, pedido } = usePedido();   // <-- AÑADIDO AQUÍ
+    const { agregarProducto, pedido } = usePedido();   
     const { id } = use(params);
-
     const [product, setProducto] = useState([]);
     const [cantidad, setCantidad] = useState(1);
     const [mainImage, setMainImage] = useState("");
-
     const [productosRelacionados, setProductosRelacionados] = useState([]);
 
 
@@ -36,7 +35,7 @@ export default function ProductDetail({ params }) {
                 setProducto(data);
                 setMainImage(data.images?.[0] || data.image);
 
-                // 🔥 Cuando ya tengo el producto → cargar relacionados
+                
                 if (data.category) {
                     const response = await fetch(`/api/products?category=${data.category}`);
                     const json = await response.json();
@@ -56,7 +55,7 @@ export default function ProductDetail({ params }) {
     }, []);
 
 
-    // 👉 SUBTOTAL DEL PEDIDO ACTUAL
+
     const subtotalPedido = pedido.reduce(
         (acc, p) => acc + (Number(p.price) * (p.cantidad ?? 1)),
         0
@@ -72,8 +71,6 @@ export default function ProductDetail({ params }) {
             <div className="bg-gradient-to-b from-black via-[#0f0f0f] to-[#1b1b1b] text-white min-h-screen py-10 px-4 ">
                 <div className="container mx-auto">
                     <div className="flex flex-wrap -mx-4">
-
-                        {/* IMÁGENES */}
                         <div className="w-full md:w-1/2 px-4 mb-10 ">
 
                             {mainImage && product.name && (
@@ -105,23 +102,19 @@ export default function ProductDetail({ params }) {
                                     </div>
                                 ))}
 
-                            </div>
-
-                            {/* VIDEO DE INSTAGRAM */}
+                            </div>         
                             {product.instagramUrl && (
 
 
                                 <InstagramEmbed url={product.instagramUrl} />
 
                             )}
-                        </div>
-
-                        {/* DETALLE */}
+                        </div>              
                         <div className="w-full md:w-1/2 px-4">
 
                             <h2 className="text-3xl font-bold mb-2">{product.name}</h2>
 
-                            {/* SUBTOTAL DEL PEDIDO ACTUAL */}
+                            
                             {pedido.length > 0 && (
                                 <p className="text-gray-800 text-lg mb-4">
                                     🛒 <span className="font-semibold">Tu lista actual:</span>
@@ -136,7 +129,7 @@ export default function ProductDetail({ params }) {
                                 {200 && <span className="text-white line-through">$200</span>}
                             </div>
 
-                            {/* Selector de cantidad */}
+                            
                             <div className="flex items-center gap-4 mb-6">
                                 <button
                                     onClick={() => setCantidad((prev) => Math.max(1, prev - 1))}
@@ -173,7 +166,7 @@ export default function ProductDetail({ params }) {
 
                             </div>
 
-                            {/* BOTONES */}
+                           
                             <div className="flex flex-col sm:flex-row gap-4 mb-6">
 
                                 <a
@@ -182,10 +175,7 @@ export default function ProductDetail({ params }) {
                                     )}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="
-            inline-block 
-            bg-[#E8899B]
-            text-white 
+                                    className="inline-block  bg-[#E8899B] text-white 
             py-3 px-6 
             rounded-xl 
             text-base font-bold
@@ -198,24 +188,25 @@ export default function ProductDetail({ params }) {
                                 >
                                     Consultar este producto
                                 </a>
-
-                                <button
-                                    className="
-           
-            bg-[#E8899B]
-            text-white 
+                                            <a
+                                    href={product.mercadoLibre}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-block  bg-[#E8899B] text-white 
             py-3 px-6 
             rounded-xl 
             text-base font-bold
             shadow-lg shadow-pink-400/40
             transition-all duration-300
             hover:scale-[1.05] hover:shadow-pink-300/60
-            cursor-pointer
-            sm:py-4 sm:px-10 sm:text-xl
+            sm:py-4 sm:px-10 sm:text-xl  
+            text-center
         "
                                 >
-                                    Ver en MercadoLibre
-                                </button>
+                                       Ver en MercadoLibre
+                                </a>
+
+         
 
                             </div>
 

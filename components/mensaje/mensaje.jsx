@@ -22,7 +22,7 @@ export default function Mensaje() {
   return (
     <div className="shadow-md border border-black rounded-lg p-8 bg-transparent text-black">
 
-      {/* 📌 FORMULARIO */}
+      
       {status === "form" && (
         <>
           <p className="font-semibold tracking-wide mb-3 text-black">
@@ -71,7 +71,7 @@ export default function Mensaje() {
         </>
       )}
 
-      {/* ✔️ MENSAJE DE ÉXITO */}
+      
       {status === "success" && (
         <div className="flex flex-col items-center text-center py-12 animate-fadeIn">
           {/* Check animado */}
@@ -95,7 +95,7 @@ export default function Mensaje() {
         </div>
       )}
 
-      {/* ❌ MENSAJE DE ERROR */}
+     
       {status === "error" && (
         <div className="flex flex-col items-center text-center py-12 animate-fadeIn">
           <p className="text-red-600 text-lg font-semibold">

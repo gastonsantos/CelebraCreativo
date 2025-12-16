@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
@@ -9,14 +8,14 @@ export default function InstagramVideo({ url }) {
     const [isOpen, setIsOpen] = useState(true);
     const [isSmallScreen, setIsSmallScreen] = useState(false);
 
-    // Detectar pantallas chicas
+
     useEffect(() => {
         const check = () => {
             const small = window.innerWidth < 640;
             setIsSmallScreen(small);
 
             if (small) {
-                setIsOpen(false); // 🔥 Auto-cerrar en mobile
+                setIsOpen(false); 
             }
         };
 
@@ -25,7 +24,7 @@ export default function InstagramVideo({ url }) {
         return () => window.removeEventListener("resize", check);
     }, []);
 
-    // IntersectionObserver solo en pantallas grandes
+    
     useEffect(() => {
         if (isSmallScreen) return;
 
@@ -44,7 +43,7 @@ export default function InstagramVideo({ url }) {
         return () => observer.disconnect();
     }, [isSmallScreen]);
 
-    // Cargar script de Instagram solo en pantallas grandes
+ 
     useEffect(() => {
         if (!shouldLoad || isSmallScreen) return;
 
@@ -60,7 +59,7 @@ export default function InstagramVideo({ url }) {
         document.body.appendChild(script);
     }, [shouldLoad, isSmallScreen]);
 
-    // Reprocesar embed al abrir
+    
     useEffect(() => {
         if (!isSmallScreen && isOpen && window.instgrm) {
             setTimeout(() => window.instgrm?.Embeds?.process(), 150);
@@ -70,7 +69,7 @@ export default function InstagramVideo({ url }) {
 
     return (
         <>
-            {/* 🔵 Botón flotante para abrir (si está cerrado) */}
+           
             {!isOpen && (
                 <button
                     onClick={() => setIsOpen(true)}
@@ -103,7 +102,7 @@ export default function InstagramVideo({ url }) {
                 </button>
             )}
 
-            {/* 🟣 Pantallas grandes → ventanita flotante */}
+           
             {!isSmallScreen && isOpen && (
                 <div className="fixed top-4 right-4 z-50 mt-24">
                     <div className="
@@ -111,7 +110,7 @@ export default function InstagramVideo({ url }) {
                         border border-white/20 p-2
                         w-[70vw] max-w-[340px] aspect-[9/16] min-w-[200px]
                     ">
-                        {/* Botón cerrar */}
+                        
                         <button
                             onClick={() => setIsOpen(false)}
                             className=" cursor-pointer *:absolute top-2 right-2 bg-black/60 text-white rounded-full p-1 text-sm hover:bg-black transition"
@@ -135,7 +134,7 @@ export default function InstagramVideo({ url }) {
                 </div>
             )}
 
-            {/* 🔥 Pantallas chicas → Abrir en modal centrado */}
+            
             {isSmallScreen && isOpen && (
                 <div className="
                     fixed inset-0 z-50 bg-black/80 backdrop-blur-sm
@@ -153,7 +152,7 @@ export default function InstagramVideo({ url }) {
                             ✕
                         </button>
 
-                        {/* No carga el video en mobile → solo si se abre */}
+                       
                         <iframe
                             src={`${url}embed`}
                             className="w-full h-full"

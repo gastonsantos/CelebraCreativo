@@ -13,7 +13,7 @@ export default function QuienesSomos() {
 
     return (
         <div className="pt-28 bg-gradient-to-b from-black via-[#0f0f0f] to-[#1b1b1b] text-white min-h-screen px-6 py-16 flex flex-col items-center">
-            {/* Header */}
+            
             <h1 className="text-5xl font-bold text-[#E8899B] mb-4 text-center">
                 ¿Quiénes Somos?
             </h1>
@@ -36,7 +36,7 @@ export default function QuienesSomos() {
           
 
 
-            {/* Sección final */}
+          
             <div className="max-w-3xl mt-16 text-center text-white text-lg">
                 <p>
                     Gracias por confiar en nosotros para acompañar tus momentos especiales.

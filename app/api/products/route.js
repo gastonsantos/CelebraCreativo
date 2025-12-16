@@ -27,15 +27,12 @@ export async function GET(req) {
   const categoryParam = searchParams.get("category");
   const queryParam = searchParams.get("query");
 
-  // 🔹 Paginación
   const page = Number(searchParams.get("page") ?? 1);
   const limit = Number(searchParams.get("limit") ?? 6);
   const start = (page - 1) * limit;
   const end = page * limit;
 
-  // ------------------------------
-  // FUNCIONES PARA BÚSQUEDA DIFUSA
-  // ------------------------------
+
 
   function normalize(text) {
     return text
@@ -74,13 +71,13 @@ export async function GET(req) {
     return dist <= Math.max(2, b.length * 0.4);
   }
 
-  // 1️⃣ Buscar por ID
+
   if (idParam) {
     const product = products.find((p) => p.id === Number(idParam));
     return Response.json(product || null);
   }
 
-  // 2️⃣ Buscar por categoría
+ 
   let data = products;
 
   if (categoryParam) {
@@ -89,7 +86,7 @@ export async function GET(req) {
     );
   }
 
-  // 3️⃣ Búsqueda difusa
+
   if (queryParam) {
     const q = normalize(queryParam);
 
@@ -106,7 +103,7 @@ export async function GET(req) {
     });
   }
 
-  // 4️⃣ PAGINACIÓN aplicada a resultados filtrados
+ 
   const paginated = data.slice(start, end);
 
  return Response.json({

@@ -7,8 +7,8 @@ export default function Card({ product }) {
     shadow-md border border-gray-200 rounded-lg max-w-sm
     m-4 transition-transform duration-200 hover:scale-105 cursor-pointer
     border border-pink-200 border border-pink-200 shadow-lg shadow-pink-400/40
-                        transition-all duration-300
-                        hover:scale-[1.05] hover:shadow-pink-300/60
+    transition-all duration-300
+     hover:scale-[1.05] hover:shadow-pink-300/60
 ">
             <Link href={`/product/${product.id}`} >
                 <div className="w-full  min-w-sm max-w-sm h-[400px] relative rounded-lg shadow-md mb-4 overflow-hidden bg-black">

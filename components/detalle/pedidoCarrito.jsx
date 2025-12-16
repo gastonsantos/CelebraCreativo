@@ -10,13 +10,13 @@ export default function PedidoCarrito() {
 
   const cantidad = pedido.length;
   const telefono = "541170668904";
-  // 🔥 TOTAL REAL
+  
   const subtotal = pedido.reduce(
     (acc, p) => acc + (Number(p.price) * (p.cantidad ?? 1)),
     0
   );
 
-  // 🔥 Mensaje para WhatsApp
+  
   const mensajeWhatsapp = encodeURIComponent(
     "Hola! Quiero consultar por este pedido:\n\n" +
     pedido
@@ -32,8 +32,7 @@ export default function PedidoCarrito() {
 
   return (
     <>
-      {/* BOTÓN FLOTANTE */}
-      {/* BOTÓN FLOTANTE CARRITO */}
+     
       <div
         className="
     fixed bottom-28 right-5 z-[9999]
@@ -62,7 +61,7 @@ export default function PedidoCarrito() {
       </div>
 
 
-      {/* PANEL DESLIZABLE */}
+      
       <div
         className={`
           fixed top-0 right-0 h-full w-80 bg-white text-black shadow-xl
@@ -84,7 +83,7 @@ export default function PedidoCarrito() {
                 key={product.id}
                 className="flex gap-3 items-center border-b py-3"
               >
-                {/* Imagen */}
+              
                 <Image
                   src={product.image}
                   alt={product.name}
@@ -120,7 +119,7 @@ export default function PedidoCarrito() {
           )}
         </div>
 
-        {/* TOTAL */}
+        
         {pedido.length > 0 && (
           <div className="p-4 border-t">
             <p className="text-lg font-bold mb-3">

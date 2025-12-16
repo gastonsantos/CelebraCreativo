@@ -1,44 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
+import {steps} from "@/data/comoComprar";
 
 export default function ComoComprar() {
-  const steps = [
-    {
-      title: "Elegí tu producto",
-      description: "Explorá nuestro catálogo y seleccioná el producto que más te guste.",
-      icon: "🛍️",
-    },
-    {
-      title: "Indicá la cantidad",
-      description: "Elegí cuántas unidades necesitás del producto.",
-      icon: "🔢",
-    },
-    {
-      title: "Contactanos por WhatsApp",
-      description: "Hacé clic en el botón de WhatsApp para enviarnos tu pedido.",
-      icon: "📲",
-    },
-    {
-      title: "Personalizamos tu pedido",
-      description: "Coordinamos colores, medidas o personalización que necesites.",
-      icon: "🎨",
-    },
-    {
-      title: "Confirmación",
-      description: "Confirmamos tiempos de entrega, costos y detalles antes de producir.",
-      icon: "✔️",
-    },
-    {
-      title: "Retiro o envío",
-      description: "Podés retirar por el local o solicitar envío a tu domicilio.",
-      icon: "📦",
-    },
-  ];
 
   return (
     <div className="bg-gradient-to-b from-black via-[#0f0f0f] to-[#1b1b1b]">
-      {/* Fondo animado */}
+     
       <div className="fixed inset-0 -z-10 overflow-hidden">
         <motion.div
           className="absolute  from-black via-[#0f0f0f] to-[#1b1b1b] w-[600px] h-[600px] rounded-full blur-3xl"
@@ -52,7 +21,7 @@ export default function ComoComprar() {
         />
       </div>
 
-      {/* HERO */}
+     
       <section className="pt-28 mb-16 text-center px-6">
         <motion.h1
           className="text-5xl font-bold text-[#E8899B] mb-4"
@@ -73,7 +42,7 @@ export default function ComoComprar() {
         </motion.p>
       </section>
 
-      {/* STEPS */}
+      
       <div className="max-w-6xl mx-auto grid gap-10 px-6 pb-24 md:grid-cols-2 lg:grid-cols-3">
         {steps.map((step, index) => (
           <motion.div

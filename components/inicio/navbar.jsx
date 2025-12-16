@@ -27,7 +27,7 @@ export default function Navbar() {
             border border-pink-200/40 shadow-pink-400/40
         ">
 
-            {/* LOGO (SOLO DESKTOP) */}
+            
             <div className="hidden lg:flex items-center gap-2">
                 <Link href="/">
                     <Image
@@ -40,7 +40,7 @@ export default function Navbar() {
                 </Link>
             </div>
 
-            {/* BOTÓN HAMBURGUESA */}
+         
             <div className="lg:hidden">
                 <button
                     onClick={() => setOpen(!open)}
@@ -58,7 +58,7 @@ export default function Navbar() {
                 </button>
             </div>
 
-            {/* MENU */}
+           
             <div
                 className={`w-full lg:flex lg:items-center lg:w-auto lg:px-3 px-8 ${open ? "block" : "hidden"}`}
             >
@@ -87,8 +87,8 @@ export default function Navbar() {
                         >
                             <a href="/inicio?category=Topper" className="block px-4 py-2 hover:bg-[#E8899B] hover:text-white">Toppers</a>
                             <a href="/inicio?category=Stickers" className="block px-4 py-2 hover:bg-[#E8899B] hover:text-white">Stickers</a>
-                            <a href="/inicio?category=Bolsitas" className="block px-4 py-2 hover:bg-[#E8899B] hover:text-white">Bolsitas</a>
-                            <a href="/inicio?category=Souvenirs" className="block px-4 py-2 hover:bg-[#E8899B] hover:text-white">Souvenirs</a>
+                            <a href="/inicio?category=Letras 3D" className="block px-4 py-2 hover:bg-[#E8899B] hover:text-white">Letras 3D</a>
+                            <a href="/inicio?category=Banderines" className="block px-4 py-2 hover:bg-[#E8899B] hover:text-white">Banderines</a>
                             <a href="/inicio?category=Centros de mesa" className="block px-4 py-2 hover:bg-[#E8899B] hover:text-white">Centros de mesa</a>
                         </div>
                     </div>
@@ -98,7 +98,7 @@ export default function Navbar() {
                     <a href="/comprar" className={linkStyle}>¿Cómo comprar?</a>
                 </div>
 
-                {/* BUSCADOR DESKTOP */}
+              
                 <div className="mt-4 lg:mt-0 lg:ml-4">
                     <Buscador />
                 </div>

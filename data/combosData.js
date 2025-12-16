@@ -4,11 +4,11 @@ export const combosData = {
         title: "Combo Full",
         image: "/combos/combofull.png",
         items: [
-            "1 Banderin de Feliz Cumple clásico",
-            "1 número 3D de 20 cm.",
-            "4 pinchos clásicos para decorar(podes usarlo para centros de mesa o lo que quieras)",
-            "10 bolsitas personalizadas clásicas(vienen vacías)",
-            "1 pack premium de golosinas x 36 unidades"
+            "1 Banderín de Felíz Cumple clásico",
+            "1 planchas de stickers de 15 unidades",
+            "15 pinchos clásicos para decorar(podes usarlo para centros de mesa o lo que quieras)",
+            "15 pochocleras (ideales para colocar pochoclos, pero también podes ponerle golosinas o lo que prefieras)",
+            "15 Mini Milk Box"
         ]
     },
 
@@ -17,11 +17,11 @@ export const combosData = {
         title: "Combo Clásico",
         image: "/combos/combo-clasico.png",
         items: [
-            "1 Banderin de Feliz Cumple clásico",
-            "2 planchas de stickers de 5 cm.para que pegues en bolsitas o lo que prefieras(en total son 30 unidades)",
-            "4 pinchos clásicos para decorar(podes usarlo para centros de mesa o lo que quieras)",
-            "4 pororeras(ideal para colocar pororó, pero también podes ponerle golosinas o lo que prefieras)",
-            "1 pack full de golosinas x 24 unidades"
+            "1 Banderín de Felz Cumple clásico",
+            "1 planchas de stickers de 15 unidades",
+            "15 pinchos clásicos para decorar(podes usarlo para centros de mesa o lo que quieras)",
+            "15 pochocleras (ideales para colocar pochoclos, pero también podes ponerle golosinas o lo que prefieras)",
+            "15 bolsitas comúnes"
             ]
 },
 
@@ -30,12 +30,12 @@ export const combosData = {
     title: "Combo Premium",
         image: "/combos/combo-premium.png",
             items: [
-                "1 Banderin de Feliz Cumple 3D",
-                "4 Letras 3D de 14 cm. ",
-                "4 pinchos clásicos para decorar (podes usarlo para centros de mesa o lo que quieras);",
-                "10 valijitas blancas personalizadas 3D (vienen vacías)",
-                "1 pack gold premium de golosinas x 48 unidades",
-                "6 frasquitos con aplique porcelana (relleno con gomitas)"
+                "1 Banderín de Felíz Cumple 3D",
+                "1 Número o Letras 3D de 14 cm. ",
+                "15 pinchos clásicos para decorar (podes usarlo para centros de mesa o lo que quieras);",
+                "Topper 3D",
+                "Bolsitas / Milk Box grandes con 3D"
+                
             ]
 }
 };

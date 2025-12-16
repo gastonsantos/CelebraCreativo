@@ -9,7 +9,6 @@ import WhatsAppButton from "@/components/inicio/whatsapButton";
 import PedidoCarrito from "@/components/detalle/pedidoCarrito";
 import OrdenarMenu from "@/components/inicio/ordenarMenu";
 import { useSearchParams } from "next/navigation";
-
 import { obtenerProductos } from "@/services/api";
 
 const Inicio = () => {
@@ -24,9 +23,7 @@ const Inicio = () => {
   const category = searchParams.get("category");
   const query = searchParams.get("query");
 
-  // -------------------------------------------------
-  // 🚀 FUNCIÓN CENTRAL DE CARGA
-  // -------------------------------------------------
+
   async function cargar(p) {
     if (loading || !hasMore) return;
 
@@ -40,10 +37,10 @@ const Inicio = () => {
         limit,
         category,
         query,
-        sort: null, // el sort lo aplicamos en el front
+        sort: null, 
       });
 
-      // evitar duplicados
+     
       setProducts((prev) => {
         const ids = new Set(prev.map((it) => it.id));
         const nuevos = data.products.filter((it) => !ids.has(it.id));
@@ -58,25 +55,19 @@ const Inicio = () => {
     }
   }
 
-  // -------------------------------------------------
-  // 🚀 RESET cuando cambian filtros
-  // -------------------------------------------------
+
   useEffect(() => {
     setProducts([]);
     setPage(1);
     setHasMore(true);
   }, [category, query]);
 
-  // -------------------------------------------------
-  // 🚀 Carga automática según la página
-  // -------------------------------------------------
+
   useEffect(() => {
     cargar(page);
   }, [page]);
 
-  // -------------------------------------------------
-  // 🚀 ORDENAMIENTO FRONTEND
-  // -------------------------------------------------
+
   useEffect(() => {
     if (!sort) return;
 
@@ -97,7 +88,7 @@ const Inicio = () => {
     setProducts(sorted);
   }, [sort]);
 
-  // Botón manual de carga
+ 
   const handleLoadMore = () => {
     if (!loading && hasMore) {
       setPage((p) => p + 1);
@@ -112,14 +103,14 @@ const Inicio = () => {
         <OrdenarMenu setSort={setSort} />
       </div>
 
-      {/* GRID DE PRODUCTOS */}
+    
       <div className="mb-8 flex flex-wrap justify-center">
         {products.map((product) => (
           <Card key={product.id} product={product} />
         ))}
       </div>
 
-      {/* LOADER / BOTÓN */}
+      
       <div className="h-20 flex flex-col justify-center items-center">
         {loading && <p className="text-pink-300">Cargando más productos...</p>}
 

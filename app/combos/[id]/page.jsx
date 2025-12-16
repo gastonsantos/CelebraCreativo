@@ -10,7 +10,7 @@ export default async function ComboPage({ params }) {
 
     const combo = combosData[id];
 
-    // 🔥 FIX: convertir combosData (objeto) en array
+  
     const allCombos = Object.values(combosData);
 
     if (!combo) {

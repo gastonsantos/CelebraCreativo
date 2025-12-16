@@ -4,7 +4,7 @@ export default function Redes() {
   return (
     <div className="mt-6 flex items-center gap-4 flex-wrap">
 
-      {/* Instagram */}
+ 
       <a
         href="https://www.instagram.com/celebra_creativo/"
         target="_blank"
@@ -27,7 +27,7 @@ export default function Redes() {
         </span>
       </a>
 
-      {/* Facebook */}
+    
       <a
         href="https://www.facebook.com/celebra.creativo?locale=es_LA"
         target="_blank"
@@ -50,7 +50,7 @@ export default function Redes() {
         </span>
       </a>
 
-      {/* TikTok */}
+     
       <a
         href="https://tiktok.com/@tu_usuario_aqui"
         target="_blank"
@@ -73,7 +73,7 @@ export default function Redes() {
         </span>
       </a>
 
-      {/* Pinterest */}
+      
       <a
         href="https://pinterest.com/tu_usuario_aqui"
         target="_blank"

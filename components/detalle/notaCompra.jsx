@@ -6,7 +6,7 @@ export default function NotaCompra() {
              <div
                                 className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-4 mt-2 flex items-start gap-3 animate-fadeSoft"
                             >
-                                {/* ICONO */}
+                            
                                 <div className="mt-1">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +24,7 @@ export default function NotaCompra() {
                                     </svg>
                                 </div>
 
-                                {/* TEXTO */}
+                              
                                 <p className="text-sm text-gray-300 leading-relaxed">
                                     <span className="font-semibold text-[#E8899B]">Nota importante: </span>
                                     Este sitio no funciona como tienda online. Los precios, stock y tiempos de entrega pueden variar.

@@ -15,8 +15,7 @@ export default function Combos() {
             </div>
             <div className="flex flex-col lg:flex-row gap-8">
 
-                {/* CARD BASE — ÚNICAMENTE CAMBIÁS CONTENIDO ADENTRO */}
-                {/** CARD 1 */}
+               
                 <div className="flex-1 bg-white/30  shadow-xl rounded-3xl p-8 transition-transform duration-300 hover:scale-105  border border-pink-200 hover:shadow-xlborder border-pink-200 shadow-lg shadow-pink-400/40
                         transition-all duration-300
                         hover:scale-[1.05] hover:shadow-pink-300/60">
@@ -34,15 +33,15 @@ export default function Combos() {
                     <ul className="mb-7 text-white flex-1 text-sm ">
                         <li className="flex mb-2">
                             <Image src="https://res.cloudinary.com/williamsondesign/check-grey.svg" width={20} height={20} alt="check" />
-                            <span className="ml-3">1 Banderín "Feliz cumple" 3D</span>
+                            <span className="ml-3">1 Banderín "Feliz cumple"</span>
                         </li>
                         <li className="flex mb-2">
                             <Image src="https://res.cloudinary.com/williamsondesign/check-grey.svg" width={20} height={20} alt="check" />
-                            <span className="ml-3">4 Letras 3D de 14cm</span>
+                            <span className="ml-3">15 Mini Milk Box super decorativas</span>
                         </li>
                         <li className="flex mb-2">
                             <Image src="https://res.cloudinary.com/williamsondesign/check-grey.svg" width={20} height={20} alt="check" />
-                            <span className="ml-3">4 pinchos clásicos para decorar</span>
+                            <span className="ml-3">15 Pochocleras super decorativas</span>
                         </li>
                         <li className="flex">
                             <Image src="https://res.cloudinary.com/williamsondesign/check-grey.svg" width={20} height={20} alt="check" />
@@ -59,7 +58,7 @@ export default function Combos() {
                     </a>
                 </div>
 
-                {/** CARD 2 (igual estilo, solo cambia contenido) */}
+              
                 <div className="flex-1 bg-white/30  shadow-xl rounded-3xl p-8 transition-transform duration-300 hover:scale-105  border border-pink-200 border border-pink-200 shadow-lg shadow-pink-400/40
                         transition-all duration-300
                         hover:scale-[1.05] hover:shadow-pink-300/60 flex flex-col">
@@ -77,15 +76,15 @@ export default function Combos() {
                     <ul className="mb-7 text-white flex-1 text-sm">
                         <li className="flex mb-2">
                             <Image src="https://res.cloudinary.com/williamsondesign/check-grey.svg" width={20} height={20} alt="check" />
-                            <span className="ml-3">Incluye X cosa</span>
+                            <span className="ml-3">1 Banderín Felíz Cumple</span>
                         </li>
                         <li className="flex mb-2">
                             <Image src="https://res.cloudinary.com/williamsondesign/check-grey.svg" width={20} height={20} alt="check" />
-                            <span className="ml-3">Más detalles</span>
+                            <span className="ml-3">1 Plancha de Stickers</span>
                         </li>
                         <li className="flex mb-2">
                             <Image src="https://res.cloudinary.com/williamsondesign/check-grey.svg" width={20} height={20} alt="check" />
-                            <span className="ml-3">Otro detalle</span>
+                            <span className="ml-3">15 pinchos decorativos</span>
                         </li>
                         <li className="flex">
                             <Image src="https://res.cloudinary.com/williamsondesign/check-grey.svg" width={20} height={20} alt="check" />
@@ -99,7 +98,7 @@ export default function Combos() {
                     </a>
                 </div>
 
-                {/** CARD 3 */}
+                
                 <div className="flex-1 bg-white/30  shadow-xl rounded-3xl p-8 transition-transform duration-300 hover:scale-105  border border-pink-200 border border-pink-200 shadow-lg shadow-pink-400/40
                         transition-all duration-300
                         hover:scale-[1.05] hover:shadow-pink-300/60 flex flex-col">
@@ -117,15 +116,15 @@ export default function Combos() {
                     <ul className="mb-7 text-white flex-1 text-sm">
                         <li className="flex mb-2">
                             <Image src="https://res.cloudinary.com/williamsondesign/check-grey.svg" width={20} height={20} alt="check" />
-                            <span className="ml-3">Contenido premium</span>
+                            <span className="ml-3">1 Banderín 3D</span>
                         </li>
                         <li className="flex mb-2">
                             <Image src="https://res.cloudinary.com/williamsondesign/check-grey.svg" width={20} height={20} alt="check" />
-                            <span className="ml-3">Más contenido</span>
+                            <span className="ml-3">1 Número 3D</span>
                         </li>
                         <li className="flex mb-2">
                             <Image src="https://res.cloudinary.com/williamsondesign/check-grey.svg" width={20} height={20} alt="check" />
-                            <span className="ml-3">Todo incluido</span>
+                            <span className="ml-3">15 pinchos decorativos</span>
                         </li>
                         <li className="flex">
                             <Image src="https://res.cloudinary.com/williamsondesign/check-grey.svg" width={20} height={20} alt="check" />

@@ -1,13 +1,13 @@
 "use client";
-
 import Image from "next/image";
 import WhatsAppButton from "@/components/inicio/whatsapButton";
 import CombosSimilares from "@/components/combos/combosSimilares";
+
 export default function ComboDetail({ title, image, items, allCombos }) {
     return (
         <main className="max-w-5xl mx-auto pt-20 pb-36 px-6 ">
 
-            {/* ENCABEZADO */}
+          
             <div className="mb-16 text-center">
                 <h2 className="
                     text-5xl font-extrabold 
@@ -17,12 +17,12 @@ export default function ComboDetail({ title, image, items, allCombos }) {
                 </h2>
 
                 <p className="mt-4 text-xl text-black-100 max-w-2xl mx-auto leading-relaxed">
-                    Todos nuestros combos son <span className="font-semibold">100% personalizados</span>
+                    Todos nuestros combos son <span className="font-semibold">100% personalizados </span>
                     y diseñados especialmente para que tu evento sea único.
                 </p>
             </div>
 
-            {/* CARD PRINCIPAL */}
+           
 
             <div className="
     relative overflow-hidden
@@ -36,18 +36,17 @@ export default function ComboDetail({ title, image, items, allCombos }) {
     hover:shadow-[0_0_60px_-10px_rgba(255,170,200,0.7)]
 ">
 
-                {/* Glow decorativo */}
+                
                 <div className="
         absolute -top-20 -left-20 w-56 h-56 
         bg-pink-300/40 blur-3xl rounded-full
     "></div>
 
-                <div className="
-        absolute -bottom-16 -right-16 w-48 h-48 
-        bg-pink-200/40 blur-3xl rounded-full
-    "></div>
+    <div className="absolute -bottom-16 -right-16 w-48 h-48 bg-pink-200/40 blur-3xl rounded-full">
 
-                {/* IMAGEN */}
+    </div>
+
+              
                 <div className="mb-10 relative z-10 p-5">
                     <Image
                         src={image}
@@ -63,7 +62,7 @@ export default function ComboDetail({ title, image, items, allCombos }) {
                     />
                 </div>
 
-                {/* LISTA DE ITEMS */}
+               
                 <ul className="space-y-5 relative z-10">
                     {items.map((item, index) => (
                         <li
@@ -90,7 +89,7 @@ export default function ComboDetail({ title, image, items, allCombos }) {
             </div>
 
 
-            {/* CTA CONTACTO */}
+            
 
             <div className="text-center mt-14">
                 <a
@@ -113,7 +112,7 @@ export default function ComboDetail({ title, image, items, allCombos }) {
                     Consultar este combo
                 </a>
             </div>
-            {/* Combos relacionados */}
+           
             <CombosSimilares combos={allCombos} currentTitle={title} />
 
             <WhatsAppButton />

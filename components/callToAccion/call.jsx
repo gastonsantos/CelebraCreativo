@@ -41,16 +41,7 @@ export default function Call() {
                 />
             )}
 
-            {/* 🔥 CONTENEDOR FULL SCREEN CON FONDO RESPONSIVE */}
-            <div
-                className="
-                    min-h-screen w-full 
-                    flex items-center justify-center
-                    bg-black relative
-                    overflow-hidden
-                "
-            >
-                {/* 🔥 Imagen de fondo A PANTALLA COMPLETA */}
+            <div className="min-h-screen w-full flex items-center justify-center bg-black relative overflow-hidden" >
                 <div
                     className="
                         absolute inset-0 w-full h-full
@@ -59,15 +50,16 @@ export default function Call() {
                     style={{
                         backgroundImage: "url(/images/Fondo3.jpeg)",
                     }}
-                ></div>
+                >
+                </div>
 
-                {/* Capa oscura */}
+              
                 <div className="absolute inset-0 bg-black/55"></div>
 
-                {/* 🔥 CONTENIDO CENTRADO Y RESPONSIVE */}
+               
                 <div className="relative z-20 flex flex-col items-center text-center px-6">
 
-                    {/* LOGO RESPONSIVE */}
+                    
                     <div
                         className="
                             w-48 h-48
@@ -85,7 +77,7 @@ export default function Call() {
                         />
                     </div>
 
-                    {/* BOTÓN RESPONSIVE */}
+                   
                     <button
                         onClick={handleCatalogClick}
                         className="
@@ -100,7 +92,7 @@ export default function Call() {
                     </button>
                 </div>
 
-                {/* WHATSAPP */}
+               
                 
                 <a
                     href={`https://wa.me/${phone}?text=${encodeURIComponent(message)}`}
@@ -118,10 +110,7 @@ export default function Call() {
                         className="w-full h-full object-contain"
                         alt="WhatsApp"
                     />
-                </a>
-
-
-                {/* INSTAGRAM QR */}
+                </a>      
                 <div
                     className="
                         hidden md:flex flex-col items-center
@@ -142,7 +131,7 @@ export default function Call() {
                     </div>
                 </div>
 
-                {/* MODAL QR */}
+                
                 {showQR && (
                     <div
                         className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
