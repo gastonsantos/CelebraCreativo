@@ -44,11 +44,11 @@ export default function Footer() {
                     <div>
                         <p className="font-semibold tracking-wide text-black">Categorias</p>
                         <ul className="mt-2 space-y-2 text-purple-100">
-                            <li><a href="/" className="hover:text-pink-300 transition">Topper</a></li>
-                            <li><a href="/" className="hover:text-pink-300 transition">Souvenirs</a></li>
-                            <li><a href="/" className="hover:text-pink-300 transition">Centros de mesa</a></li>
-                            <li><a href="/" className="hover:text-pink-300 transition">Bolsitas</a></li>
-                             <li><a href="/" className="hover:text-pink-300 transition">Combos cumple</a></li>
+                            <li><a href="/inicio?category=Topper" className="hover:text-pink-300 transition">Topper</a></li>
+                            <li><a href="/inicio?category=Stickers" className="hover:text-pink-300 transition">Stickers</a></li>
+                            <li><a href="/inicio?category=Letras 3D" className="hover:text-pink-300 transition">Letras 3D</a></li>
+                            <li><a href="/inicio?category=Banderines" className="hover:text-pink-300 transition">Banderines</a></li>
+                            <li><a href="/inicio?category=Kit Decorativo" className="hover:text-pink-300 transition">Kit Decorativo</a></li>
                         </ul>
                     </div>
 

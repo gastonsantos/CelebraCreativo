@@ -138,7 +138,7 @@ export default function Call() {
                         onClick={() => setShowQR(false)}
                     >
                         <img
-                            src="/images/Celebra-Qr.png"
+                            src="/images/Celebra-qr.png"
                             className="max-w-full max-h-full rounded-2xl"
                         />
                     </div>

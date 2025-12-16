@@ -89,7 +89,7 @@ export default function Navbar() {
                             <a href="/inicio?category=Stickers" className="block px-4 py-2 hover:bg-[#E8899B] hover:text-white">Stickers</a>
                             <a href="/inicio?category=Letras 3D" className="block px-4 py-2 hover:bg-[#E8899B] hover:text-white">Letras 3D</a>
                             <a href="/inicio?category=Banderines" className="block px-4 py-2 hover:bg-[#E8899B] hover:text-white">Banderines</a>
-                            <a href="/inicio?category=Centros de mesa" className="block px-4 py-2 hover:bg-[#E8899B] hover:text-white">Centros de mesa</a>
+                            <a href="/inicio?category=Kit Decorativo" className="block px-4 py-2 hover:bg-[#E8899B] hover:text-white">Kit Decorativo</a>
                         </div>
                     </div>
 
