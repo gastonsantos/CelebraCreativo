@@ -10,18 +10,21 @@ function buildQuery(params) {
   if (params.query) query.append("query", params.query);
   if (params.sort) query.append("sort", params.sort);
 
+  // 🔥 AGREGAR ESTO
+  if (params.featured !== undefined)
+    query.append("featured", params.featured);
+
   return query.toString();
 }
 
-// ----------------------------
-// 🔹 Obtener productos (paginado + filtros)
-// ----------------------------
+
 export async function obtenerProductos({
   page = 1,
   limit = 6,
   category = null,
   query = null,
-  sort = null
+  sort = null,
+  featured = null,
 } = {}) {
   const qs = buildQuery({ page, limit, category, query, sort });
 
@@ -48,5 +51,20 @@ export async function obtenerProductoPorId(id) {
 }
 
 
+export async function obtenerFeaturedProductos(limit = 12) {
+  const qs = buildQuery({
+    page: 1,
+    limit,
+    featured: true,
+  });
 
-export{obtenerProductos,obtenerProductoPorId}
+  const res = await fetch(`/api/products?${qs}`, {
+    cache: "no-store",
+  });
+
+  if (!res.ok) throw new Error("Error al obtener featured");
+
+  return res.json();
+}
+
+export{obtenerProductos,obtenerProductoPorId,obtenerFeaturedProductos}

@@ -10,6 +10,7 @@ export async function GET(req) {
 
   const products = rows.slice(1).map((row) => {
     const item = {};
+
     headers.forEach((h, i) => {
       item[h.trim()] = row[i]?.trim();
     });
@@ -26,13 +27,12 @@ export async function GET(req) {
   const idParam = searchParams.get("id");
   const categoryParam = searchParams.get("category");
   const queryParam = searchParams.get("query");
+  const featuredParam = searchParams.get("featured");
 
   const page = Number(searchParams.get("page") ?? 1);
   const limit = Number(searchParams.get("limit") ?? 6);
   const start = (page - 1) * limit;
   const end = page * limit;
-
-
 
   function normalize(text) {
     return text
@@ -64,35 +64,35 @@ export async function GET(req) {
   }
 
   function fuzzyMatch(text, search) {
-    const a = normalize(text);
-    const b = normalize(search);
+    const a = normalize(text || "");
+    const b = normalize(search || "");
 
     const dist = levenshtein(a, b);
     return dist <= Math.max(2, b.length * 0.4);
   }
 
-
+  // 🔍 Producto por ID
   if (idParam) {
     const product = products.find((p) => p.id === Number(idParam));
     return Response.json(product || null);
   }
 
- 
   let data = products;
 
+  // 🏷️ Filtro por categoría
   if (categoryParam) {
     data = data.filter(
       (p) => normalize(p.category) === normalize(categoryParam)
     );
   }
 
-
+  // 🔎 Búsqueda
   if (queryParam) {
     const q = normalize(queryParam);
 
     data = data.filter((p) => {
-      const name = p.name ? normalize(p.name) : "";
-      const category = p.category ? normalize(p.category) : "";
+      const name = normalize(p.name || "");
+      const category = normalize(p.category || "");
 
       return (
         name.includes(q) ||
@@ -103,13 +103,21 @@ export async function GET(req) {
     });
   }
 
- 
+  
+  if (featuredParam !== null) {
+    const isFeatured = featuredParam === "true";
+
+    data = data.filter(
+      (p) => String(p.featured).toLowerCase() === String(isFeatured)
+    );
+  }
+
+
   const paginated = data.slice(start, end);
 
- return Response.json({
-  products: paginated,
-  total: data.length,
-  hasMore: end < data.length
-});
-
+  return Response.json({
+    products: paginated,
+    total: data.length,
+    hasMore: end < data.length,
+  });
 }

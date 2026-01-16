@@ -126,7 +126,7 @@ export default function ProductDetail({ params }) {
 
                             <div className="mb-4">
                                 <span className="text-2xl font-bold mr-2">${product.price}</span>
-                                {200 && <span className="text-white line-through">$200</span>}
+                               
                             </div>
 
                             

@@ -57,7 +57,7 @@ export default function Footer() {
                         <p className="font-semibold tracking-wide text-black">Contáctanos</p>
                         <ul className="mt-2 space-y-2 text-purple-100">
                             <li> +54 11 7066 8904</li>
-                            <li> celebracreatibo@gmail.com</li>
+                            <li> celebracreativo@gmail.com</li>
                         </ul>
                     </div>
 
