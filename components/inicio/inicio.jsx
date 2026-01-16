@@ -106,7 +106,7 @@ const Inicio = () => {
       <div className="mb-2 text-center">
         <div className="w-full h-px bg-gray-300 mb-4" />
         <h2 className="text-3xl font-bold text-white tracking-wide">
-          Todos nuestros prodcutos
+          Todos nuestros productos
         </h2>
         <p className="text-gray-300 mt-2 max-w-xl mx-auto">
           Descubrí todos nuestros productos, listos para tu próxima celebración.
