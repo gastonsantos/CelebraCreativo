@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { obtenerFeaturedProductos } from "@/services/api";
-
+import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 
@@ -14,13 +14,13 @@ export default function Featured() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-  async function cargarFeatured() {
-    const data = await obtenerFeaturedProductos(12);
-    setProducts(data.products || []);
-  }
+    async function cargarFeatured() {
+      const data = await obtenerFeaturedProductos(12);
+      setProducts(data.products || []);
+    }
 
-  cargarFeatured();
-}, []);
+    cargarFeatured();
+  }, []);
 
 
   if (!products.length) return null;
@@ -28,16 +28,49 @@ export default function Featured() {
   return (
     <section className="pt-24 px-4 sm:px-6 mb-20">
 
-      <div className="mb-10 text-center">
-        <div className="w-full h-px bg-gray-300 mb-4" />
-        <h2 className="text-3xl font-bold text-white tracking-wide">
-          Lo último
-        </h2>
-        <p className="text-gray-300 mt-2 max-w-xl mx-auto">
-          Descubrí nuestros productos más recientes, listos para tu próxima celebración.
-        </p>
-      </div>
+      <div className="mb-14 text-center relative">
+        {/* Línea animada */}
+        <motion.div
+          className="w-24 h-1 bg-[#E8899B] mx-auto mb-6 rounded-full"
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
+        />
 
+        {/* Título */}
+        <motion.h2
+          className="text-4xl sm:text-5xl font-extrabold text-white tracking-wide"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          Lo último
+        </motion.h2>
+
+        {/* Subtítulo */}
+        <motion.p
+          className="text-gray-300 mt-4 max-w-xl mx-auto text-lg"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.15 }}
+          viewport={{ once: true }}
+        >
+          Descubrí nuestros productos más recientes, listos para tu próxima celebración.
+        </motion.p>
+
+        {/* Glow sutil */}
+        <motion.div
+          className="absolute inset-0 -z-10 flex justify-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+        >
+          <div className="w-72 h-24 bg-[#E8899B]/20 blur-3xl rounded-full" />
+        </motion.div>
+      </div>
 
       <Swiper
         modules={[Autoplay]}

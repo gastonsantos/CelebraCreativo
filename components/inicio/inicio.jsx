@@ -5,13 +5,14 @@ import Navbar from "@/components/inicio/navbar";
 import Footer from "@/components/inicio/footer";
 import Card from "@/components/inicio/card";
 import Combos from "@/components/inicio/combos";
+import Seguinos from "@/components/inicio/seguinos";
 import Featured from "@/components/inicio/featured";
 import WhatsAppButton from "@/components/inicio/whatsapButton";
 import PedidoCarrito from "@/components/detalle/pedidoCarrito";
 import OrdenarMenu from "@/components/inicio/ordenarMenu";
 import { useSearchParams } from "next/navigation";
 import { obtenerProductos } from "@/services/api";
-
+import { motion } from "framer-motion";
 
 const Inicio = () => {
   const searchParams = useSearchParams();
@@ -103,14 +104,50 @@ const Inicio = () => {
 
 
       <Featured />
-      <div className="mb-2 text-center">
-        <div className="w-full h-px bg-gray-300 mb-4" />
-        <h2 className="text-3xl font-bold text-white tracking-wide">
+      <div className="mb-14 text-center relative">
+
+        {/* Línea animada */}
+        <motion.div
+          className="w-32 h-1 bg-[#E8899B] mx-auto mb-6 rounded-full"
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
+        />
+
+        {/* Título */}
+        <motion.h2
+          className="text-3xl sm:text-4xl font-extrabold text-white tracking-wide"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
           Todos nuestros productos
-        </h2>
-        <p className="text-gray-300 mt-2 max-w-xl mx-auto">
+        </motion.h2>
+
+        {/* Subtítulo */}
+        <motion.p
+          className="text-gray-300 mt-4 max-w-xl mx-auto text-base sm:text-lg"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.15 }}
+          viewport={{ once: true }}
+        >
           Descubrí todos nuestros productos, listos para tu próxima celebración.
-        </p>
+        </motion.p>
+
+        {/* Glow sutil */}
+        <motion.div
+          className="absolute inset-0 -z-10 flex justify-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+        >
+          <div className="w-80 h-28 bg-[#E8899B]/20 blur-3xl rounded-full" />
+        </motion.div>
+
       </div>
 
       <div className="pt-8 mb-4 flex justify-center lg:justify-end px-6">
@@ -145,7 +182,7 @@ const Inicio = () => {
           <p className="text-gray-400 mt-2">No hay más productos.</p>
         )}
       </div>
-
+      <Seguinos />
       <Combos id="combos" />
       <PedidoCarrito />
       <WhatsAppButton />

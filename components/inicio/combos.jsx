@@ -1,21 +1,58 @@
 "use client";
 
 import Image from "next/image";
-
+import { motion } from "framer-motion";
 export default function Combos() {
     return (
-        <main  id="combos" className="max-w-6xl mx-auto pt-10 pb-36 px-8">
-            <div className="mb-12 text-center">
-                <div className="w-full h-px bg-gray-300 mb-4"></div>
-                <h2 className="text-3xl font-bold text-white tracking-wide">
+        <main id="combos" className="max-w-6xl mx-auto pt-10 pb-36 px-8">
+            <div className="mb-14 text-center relative">
+
+                {/* Línea animada */}
+                <motion.div
+                    className="w-28 h-1 bg-[#E8899B] mx-auto mb-6 rounded-full"
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    viewport={{ once: true }}
+                />
+
+                {/* Título */}
+                <motion.h2
+                    className="text-3xl sm:text-4xl font-extrabold text-white tracking-wide"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    viewport={{ once: true }}
+                >
                     Combos para cumple
-                </h2>
-                <h4>Elegí el combo que más te guste! Y lo realizamos 100% personalizado...</h4>
-               
+                </motion.h2>
+
+                {/* Subtítulo */}
+                <motion.p
+                    className="text-gray-300 mt-4 max-w-xl mx-auto text-base sm:text-lg"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.15 }}
+                    viewport={{ once: true }}
+                >
+                    Elegí el combo que más te guste y lo realizamos 100% personalizado para tu celebración.
+                </motion.p>
+
+                {/* Glow sutil */}
+                <motion.div
+                    className="absolute inset-0 -z-10 flex justify-center"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ duration: 1 }}
+                    viewport={{ once: true }}
+                >
+                    <div className="w-72 h-24 bg-[#E8899B]/20 blur-3xl rounded-full" />
+                </motion.div>
+
             </div>
             <div className="flex flex-col lg:flex-row gap-8">
 
-               
+
                 <div className="flex-1 bg-white/30  shadow-xl rounded-3xl p-8 transition-transform duration-300 hover:scale-105  border border-pink-200 hover:shadow-xlborder border-pink-200 shadow-lg shadow-pink-400/40
                         transition-all duration-300
                         hover:scale-[1.05] hover:shadow-pink-300/60">
@@ -27,7 +64,7 @@ export default function Combos() {
                             height={80}
                             className="rounded-3xl w-full h-auto object-cover rounded-3xl"
                         />
-                       
+
                     </div>
 
                     <ul className="mb-7 text-white flex-1 text-sm ">
@@ -58,7 +95,7 @@ export default function Combos() {
                     </a>
                 </div>
 
-              
+
                 <div className="flex-1 bg-white/30  shadow-xl rounded-3xl p-8 transition-transform duration-300 hover:scale-105  border border-pink-200 border border-pink-200 shadow-lg shadow-pink-400/40
                         transition-all duration-300
                         hover:scale-[1.05] hover:shadow-pink-300/60 flex flex-col">
@@ -70,7 +107,7 @@ export default function Combos() {
                             height={80}
                             className=" w-full h-auto object-cover rounded-3xl "
                         />
-                        
+
                     </div>
 
                     <ul className="mb-7 text-white flex-1 text-sm">
@@ -98,7 +135,7 @@ export default function Combos() {
                     </a>
                 </div>
 
-                
+
                 <div className="flex-1 bg-white/30  shadow-xl rounded-3xl p-8 transition-transform duration-300 hover:scale-105  border border-pink-200 border border-pink-200 shadow-lg shadow-pink-400/40
                         transition-all duration-300
                         hover:scale-[1.05] hover:shadow-pink-300/60 flex flex-col">
@@ -110,7 +147,7 @@ export default function Combos() {
                             height={80}
                             className=" w-full h-auto object-cover rounded-3xl"
                         />
-                     
+
                     </div>
 
                     <ul className="mb-7 text-white flex-1 text-sm">
